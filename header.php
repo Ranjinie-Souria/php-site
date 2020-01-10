@@ -21,7 +21,7 @@ session_start() ?>
 	<?php if(isset($_SESSION['name']) && $_SESSION['role']==1){echo("<a href='admin.php'>Panneau d'Administration</a>");}?>
 	<a href="membres.php"> Liste des membres</a>
 	<a href="contact.php"> Contact</a>
-	<a href="./collectify/web/app.php">Collectify</a></ul>
+	<a href="../Collectify/web/app_dev.php/">Collectify</a></ul>
 	
 	<?php
 	if(isset($_SESSION['name'])){
