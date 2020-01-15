@@ -19,12 +19,13 @@ session_start() ?>
 			 <a href='connexion.php'>Connexion</a>");}
 	?>
 	<?php if(isset($_SESSION['name']) && $_SESSION['role']==1){echo("<a href='admin.php'>Panneau d'Administration</a>");}?>
-	<a href="membres.php"> Liste des membres</a>
+
 	<a href="contact.php"> Contact</a>
 	<a href="../Collectify/web/app_dev.php/">Collectify</a></ul>
 	
 	<?php
 	if(isset($_SESSION['name'])){
+	    echo("<a href=\"membres.php\"> Liste des membres</a>");
 		echo("<a href='./deconnexion.php?disconnect=1'>Se déconnecter</a>");
 		if(isset($_SESSION['image'])){
 			echo('<img alt="avatar" class="avatar" src="/php/img/'.$_SESSION['image'].'" />');

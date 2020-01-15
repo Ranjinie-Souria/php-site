@@ -56,6 +56,17 @@ function addAvatar($avatar,$name,$connexion){
 	}
 }
 
+/* add mail */
+function addMail($connexion,$name,$mail){
+    $sql = "UPDATE `sitephp`.`users` SET `mail`='$mail' WHERE `name`='$name'";
+    if($connexion->query($sql)){
+        echo '<br/><div class="boite">Email modifié !</div>';
+        $_SESSION['mail'] = $mail;
+    }
+    else{
+        echo $connexion->error;
+    }
+}
 
 /* Affichage des utilisateurs */
 function getUsers($connexion){
@@ -74,6 +85,11 @@ function getUsers($connexion){
 		echo("</table>");
 	}
 }
+
+
+
+
+
 
 /*************** Panneau d'administration ***************/
 /* Affichage des utilisateurs */
@@ -128,7 +144,7 @@ function getUser($connexion,$id){
 		return $user;
 	}
 	else{
-		echo $connexion->error;
+		echo $connexion->query($sql);
 	}
 }
 	
@@ -136,7 +152,6 @@ function getUser($connexion,$id){
 function editUser($connexion,$id,$name,$password,$mail,$role,$avatar){
 	$sql = "UPDATE `sitephp`.`users` SET `name`='$name',`password`='$password', `mail`='$mail',`role`='$role',`avatar`='$avatar' WHERE `id`='$id'";
 	if($connexion->query($sql)){
-		echo '<br/><div class="boite">Utilisateur modifié !</div>';
 	}
 	else{
 		echo $connexion->error;

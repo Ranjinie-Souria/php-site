@@ -15,7 +15,7 @@ else{
 </div>
 
 <div class="boite">
-Vous pouvez accéder librement au projet <a href="../Collectify/web/">Collectify</a> !
+Vous pouvez accéder librement au projet <a href="../Collectify/web/app_dev.php">Collectify</a> !
 </div>
 
 
