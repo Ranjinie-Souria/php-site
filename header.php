@@ -6,7 +6,6 @@ session_start() ?>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" media="screen" type="text/css" href="style.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <title>PHP</title>
     <div style="titre"><h1>Compte Rendu PHP</h1></div>
 
@@ -35,7 +34,8 @@ session_start() ?>
             if (isset($_SESSION['image'])) {
                 echo('<img alt="avatar" class="avatar" src="/php/img/' . $_SESSION['image'] . '" />');
             }
-            echo("<a style='padding: 5px 0px;color: RGB(244,83,112);text-decoration: none;' href='profil.php'>Bienvenue, " . $_SESSION['name'] . " !</a>");
+            echo("<a style='padding: 5px 0px;color: RGB(244,83,112);text-decoration: none;'
+                    href='profil.php'>Bienvenue, " . $_SESSION['name'] . " !</a>");
         }
         ?></nav>
 </header>

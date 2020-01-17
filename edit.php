@@ -59,10 +59,14 @@ else {
         </form></div>
 
 
-        <br/><br/><?php
+        <br/><br/>
+
+        <?php
     } else {
         if (isset($_POST['name']) && !empty($_POST['name'])) {
             $newName = $_POST['name'];
+            move_uploaded_file($_SERVER['DOCUMENT_ROOT'] . '/php/img/' . $user['name'] . '.png', $_SERVER['DOCUMENT_ROOT'] . '/php/img/' . $newName . '.png');
+            $newAvatar = $newName . '.png';
         } else {
             $newName = $user['name'];
         }
@@ -78,8 +82,9 @@ else {
             $newMail = $user['mail'];
         }
         if (isset($_FILES['avatar']) && !$_FILES['avatar']['error']) {
-            move_uploaded_file($_FILES['avatar']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/php/img/' . $name . '.png');
-            $newAvatar = $name . '.png';
+            unlink($_SERVER['DOCUMENT_ROOT'] . '/php/img/' . $user['name'] . '.png');
+            move_uploaded_file($_FILES['avatar']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/php/img/' . $newName . '.png');
+            $newAvatar = $newName . '.png';
         } else {
             $newAvatar = $user['avatar'];
         }

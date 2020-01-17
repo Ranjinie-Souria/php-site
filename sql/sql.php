@@ -4,17 +4,19 @@ require("baseconnexion.php"); /* Connexion à la base de données */
 /* Fonctions faisant appel à la base de données */
 
 /* Ajout d'un utilisateur */
+
 function addUser($name, $password, $mail, $connexion)
 {
-    $doublonRequete = "SELECT COUNT(*) as user FROM users WHERE name = '$name'"; /* Recherche au cas où le nom est déjà pris */
+    $doublonRequete = "SELECT COUNT(*) as user FROM users WHERE name = '$name'";
+    /* Recherche au cas où le nom est déjà pris */
     $doublons = $connexion->query($doublonRequete);
     $doublon = $doublons->fetch_object();
     if ($doublon->user >= 1) {
         echo '<br/><div class="boite">Ce nom d\'utilisateur est déjà pris.</div>';
     } else {
-        $sql = "INSERT INTO `sitephp`.`users` (`name`, `password`, `mail`,`role`) VALUES ('$name', '$password','$mail',0)";
+        $sql = "INSERT INTO `sitephp`.`users` (`name`, `password`, `mail`,`role`) 
+VALUES ('$name','$password','$mail',0)";
         $requete = $connexion->query($sql);
-        echo '<br/><div class="boite">Votre compte a été crée ! </div>';
     }
 }
 
@@ -50,7 +52,7 @@ function addAvatar($avatar, $name, $connexion)
 {
     $sql = "UPDATE `sitephp`.`users` SET `avatar`='$avatar' WHERE `name`='$name'";
     if ($connexion->query($sql)) {
-        echo '<br/><div class="boite">Avatar ajouté !</div>';
+
     } else {
         echo $connexion->error;
     }
@@ -61,7 +63,6 @@ function addMail($connexion, $name, $mail)
 {
     $sql = "UPDATE `sitephp`.`users` SET `mail`='$mail' WHERE `name`='$name'";
     if ($connexion->query($sql)) {
-        echo '<br/><div class="boite">Email modifié !</div>';
         $_SESSION['mail'] = $mail;
     } else {
         echo $connexion->error;
